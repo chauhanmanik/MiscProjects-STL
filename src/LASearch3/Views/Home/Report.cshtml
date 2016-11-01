@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Search Report";
+}
+
+@section scripts{
+    <script src="~/js/appStl.js"></script>
+    <script src="~/js/reportCtrl.js"></script>
+}
+<div ng-app="appStl" ng-controller="ReportCtrl as vm" ng-cloak>
+    <div>
+        <h2 class="alert-info">Double Booking Report</h2>
+    </div>
+    <label>Select month</label>
+    <div class='input-group input-group-sm' style='width:170px;padding:2px 2px 2px 2px;'>
+        <input type='text' class='form-control' uib-datepicker-popup='MM-yyyy' datepicker-options="{minMode: 'month'}" ng-model='vm.bookingDate'
+               is-open="vm.calPopup.opened" ng-required="true" close-text="Close" ng-change="vm.filterData()" contenteditable="false" />
+        <span class='input-group-btn'>
+            <button type='button' class="btn btn-default" ng-click="vm.calOpen()"><i class='glyphicon glyphicon-calendar'></i></button>
+        </span>
+    </div>
+
+    <div>
+        <h3 class="text-info">Double Booking Report for {{vm.bookingDate | date:'MMM-yyyy'}}</h3>
+    </div>
+
+    <div>
+        <table class="table table-responsive table-striped table-bordered">
+            <thead>
+                <th>Authority</th>
+                <th>Booing Dates</th>
+                <th>Double Bookings</th>
+                <th>Search Clerks</th>
+            </thead>
+            <tr ng-repeat="item in vm.data">
+                <td>{{item.authorityName}}</td>
+                <td>
+                    <div ng-repeat="dt in item.bookingDate">
+                        {{dt | date:'dd/MM/yyyy'}}
+                    </div>
+                </td>
+                <td>{{item.numberOfBookings}}</td>
+                <td>
+                    <div ng-repeat="cl in item.searchClerks">
+                        <span>{{cl.name}}</span>
+                        <span class="text-info">({{cl.email}})</span>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

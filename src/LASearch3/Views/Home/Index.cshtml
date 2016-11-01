@@ -1,0 +1,56 @@
+﻿@*@model LASearch3.DoubleBookingEntryVM*@
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@section scripts{
+    <script src="~/js/appStl.js"></script>
+    <script src="~/js/DoubleBookingEntryCtrl.js"></script>
+}
+
+<div class="col-md-6 col-lg-offset-3">
+    <h2 class="alert-info">Add Double Booking</h2>
+</div>
+
+<div ng-app="appStl" ng-controller="DoubleBookingEntryCtrl as vm" ng-cloak>
+    <div class="col-md-6 col-lg-offset-3">
+        <form name="bookingForm" class="form-group input-group-sm" ng-submit="vm.submitForm()">
+            <div class="form-group">
+                <label>Search Clerk</label>
+                <select id="name" name="name" class="form-control" data-ng-model="vm.data.selectedSearchClerk" ng-required="true">
+                    <option ng-repeat="item in vm.data.searchClerk" ng-value="{{item}}">
+                        {{item.name}}
+                    </option>
+                </select>
+                <span ng-show="bookingForm.name.$error.required" class="text-warning">Input required</span>
+            </div>
+            <div class="form-group">
+                <label>Local Authority</label>
+                <select id="authority" name="authority" class="form-control" data-ng-model="vm.data.selectedAuthority" ng-required="true">
+                    <option ng-repeat="item in vm.data.authority" ng-value="{{item}}">
+                        {{item.name}}
+                    </option>
+                </select>
+                <span ng-show="bookingForm.authority.$error.required" class="text-warning">Input required</span>
+            </div>
+            <div class="form-group">
+                <label>Double Booking Date</label>
+                <div class='input-group input-group-sm' style='width:170px;padding:2px 2px 2px 2px;'>
+                    <input type='text' id="bookingDate" name="bookingDate" class='form-control' uib-datepicker-popup='dd-MM-yyyy' ng-model='vm.currentDate'
+                           is-open="vm.calPopup.opened" ng-required="true" close-text="Close" />
+                    <span class='input-group-btn'>
+                        <button type='button' class="btn btn-default" ng-click="vm.calOpen()"><i class='glyphicon glyphicon-calendar'></i></button>
+                    </span>
+                </div>
+                <span ng-show="bookingForm.bookingDate.$error.required" class="text-warning">Input required</span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" ng-disabled="bookingForm.$invalid" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 col-lg-offset-3">
+        <h2> {{vm.alertMessage}}</h2>
+    </div>
+</div>

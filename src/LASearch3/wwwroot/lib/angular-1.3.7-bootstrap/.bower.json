@@ -1,0 +1,31 @@
+{
+  "author": {
+    "name": "https://github.com/angular-ui/bootstrap/graphs/contributors"
+  },
+  "name": "angular-bootstrap-seanlee10",
+  "keywords": [
+    "angular",
+    "angular-ui",
+    "bootstrap"
+  ],
+  "license": "MIT",
+  "ignore": [],
+  "description": "Native AngularJS (Angular) directives for Bootstrap.",
+  "version": "0.12.2",
+  "main": [
+    "./ui-bootstrap-tpls.js"
+  ],
+  "dependencies": {
+    "angular": "1.3.7"
+  },
+  "homepage": "https://github.com/seanlee10/bootstrap-bower",
+  "_release": "0.12.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.12.2",
+    "commit": "e4b3f7fa31c50aa940dc046bd29f6e5c81d384cf"
+  },
+  "_source": "https://github.com/seanlee10/bootstrap-bower.git",
+  "_target": "~0.12.2",
+  "_originalSource": "angular-1.3.7-bootstrap"
+}
